@@ -38,6 +38,9 @@ jobs:
 
     - run: |
         kubectl apply -f K8s/
+        sleep 10
         kubectl get pods -A
+        sleep 10
         kubectl port-forward svc/wisdom-server-service 8080:80 &>/dev/null &
+        sleep 5
         curl http://localhost:8080
