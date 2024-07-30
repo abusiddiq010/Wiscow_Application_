@@ -35,3 +35,9 @@ jobs:
     - run: |
         kubectl cluster-info
         kubectl get nodes
+
+    - run: |
+        kubectl apply -f K8s/
+        kubectl get pods -A
+        kubectl port-forward svc/wisdom-server-service 8080:80 &>/dev/null &
+        curl http://localhost:8080
